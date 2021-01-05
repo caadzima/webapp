@@ -20,27 +20,49 @@ def close_connection(exception):
 
 @app.route("/")
 def template():
-    with app.app_context():
-        cur = get_db().cursor()
-        cur = get_db().execute("Select * FROM USER", ())
-        rv = cur.fetchall()
-        print(rv)
+    cur = get_db().cursor()
+    cur = get_db().execute("Select * FROM USER", ())
+    rv = cur.fetchall()
+    print(rv)
     return render_template("template.html")
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():
-    with app.app_context():
-        cur = get_db().cursor()
+    cur = get_db().cursor()
     if request.method=='POST':
         userEmail = request.form['userEmail']
         userPassword = request.form['userPassword']
-        print(userEmail, userPassword)
-        return render_template("main2.html")
+        cur.execute("""SELECT email,password
+                   FROM USER
+                   WHERE email=?
+                       and password=?""",
+                (userEmail, userPassword))
+        if cur.fetchone():
+            return render_template("main2.html")
+        else:
+            return render_template("signup.html")
     else:
         return render_template("login.html")
 @app.route("/signup", methods=['GET', 'POST'])
 def signup():
-    return render_template("signup.html")
+    cur = get_db().cursor()
+    if request.method=='POST':
+        userEmail = request.form['email']
+        userPassword = request.form['password']
+        cur.execute("""SELECT email,password
+                   FROM USER
+                   WHERE email=?
+                       and password=?""",
+                (userEmail, userPassword))
+        if cur.fetchone():
+            return render_template("login.html")
+        else:
+            cur = get_db().execute("INSERT INTO USER(email, password) VALUES (?, ?)", (userEmail, userPassword))
+            db = get_db()
+            db.commit()
+        return render_template("login.html")
+    else:
+        return render_template("signup.html")
 @app.route("/main2")
 def main2():
     return render_template("main2.html")

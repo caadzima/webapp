@@ -14,24 +14,41 @@
             <div class="column is-4 is-offset-4">
                 <h3 class="title">Signup</h3>
                 <div class="box">
-                    <form method="POST" action="/login">
+                    <form method="POST">
                         <div class="field">
                             <div class="control">
-                                <input class="input is-large" type="email" name="email" placeholder="Your Email" autofocus="">
+                                <input type="email" name="email" id="email" placeholder="Your Email">
                             </div>
                         </div>
 
                         <div class="field">
                             <div class="control">
-                                <input class="input is-large" type="password" name="password" placeholder="Your Password">
+                                <input type="password" name="password" id="password" placeholder="Your Password">
                             </div>
                         </div>
+                        <div><p id="msg"></p></div>
+                        
                         <div class="field">
                             <div class="control">
-                                <input class="input is-large" type="password" name="password" placeholder="Reenter Your Password">
+                                <input type="password" name="password2" id="password2" onkeyup="checkPasswords()" placeholder="Reenter Your Password">
                             </div>
+                            <script>
+                                function checkPasswords() {
+                                    var p1 = document.getElementById("password").value
+                                    var p2 = document.getElementById("password2").value
+                                    
+                                    if(p1 != p2) {
+                                        document.getElementById("msg").innerHTML = "Passwords do not match"
+                                        document.getElementById("signup").disabled = true;
+                                    }
+                                    else {
+                                        document.getElementById("msg").innerHTML = ""
+                                        document.getElementById("signup").disabled = false;
+                                    }
+                                }
+                            </script>
                         </div>
-                        <button class="button is-block is-info is-large is-fullwidth">Signup</button>
+                        <button type="submit" id= "signup" disabled=True >Signup</button>
                     </form>
                 </div>
             </div>
