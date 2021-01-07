@@ -8,7 +8,57 @@
     {% extends "template.html" %}
     {% block content %}
     
-    <h1> New Recipe </h1>
+    <h3 class="title">Enter Recipe</h3>
+        <div class="box">
+            <form method="POST">
+              <h4>Select Image:</h4>
+              <input type="file" name="recipePhoto" id="recipePhoto">
+              <label for="Recipe Type">Choose a Recipe Category:</label>
+              <select name="category" id="category">
+                <optgroup label="Main Courses">
+                  <option value="Meats">Meats</option>
+                  <option value="Pasta">Pasta</option>
+                  <option value="Seafood">Seafood</option>
+                  <option value="Veggie">Veggie</option>
+                  <option value="Pizza">Pizza</option>
+                  <option value="Sandwich">Sandwich/Wraps</option>
+                  <option value="Greek">Greek</option>
+                  <option value="Mexican">Mexican</option>
+                  <option value="Other">Other</option>
+                </optgroup>
+                <optgroup label="Appetizers and Sides">
+                  <option value="Dips">Dips and Cheeses</option>
+                  <option value="Bread">Bread</option>
+                  <option value="Other">Other</option>
+                </optgroup>
+                <optgroup label="Desserts">
+                  <option value="Cookies">Cookies</option>
+                  <option value="Brownies">Brownies</option>
+                  <option value="Cakes">Cakes</option>
+                  <option value="Tarts">Tarts</option>
+                  <option value="Pastries">Pastries</option>
+                  <option value="Bread">Bread</option>
+                  <option value="Pies">Pie</option>
+                  <option value="Cupcakes">Cupcakes</option>
+                  <option value="Muffins">Muffins</option>
+                  <option value="Other">Other</option>
+                </optgroup>
+              </select>
+                <div class="field">
+                      <div class="control">
+                            <h4>Enter Recipe Name:</h4>
+                            <input type="input" name="recipe name" id="recipeName">
+                      </div>
+                </div>
+                <div class="field">
+                      <div class="control">
+                            <h5>Enter Link to Recipe or Recipe Instructions</h5>
+                            <input type="input" name="recipe ins" id="recipe ins">
+                      </div>
+                </div>
+                <button type="submit" id= "add recipe">Submit</button>
+            </form>
+          </div>
       
     {% endblock %}
   </body>
