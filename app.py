@@ -66,9 +66,20 @@ def signup():
 @app.route("/main2")
 def main2():
     return render_template("main2.html")
-@app.route("/recipe")
+@app.route("/recipe", methods=['GET', 'POST'])
 def recipe():
-    return render_template("recipe.html")
+    cur = get_db().cursor()
+    if request.method=='POST':
+        recipe_image = request.form['recipePhoto']
+        recipe_category = request.form['category']
+        recipe_name = request.form['recipeName']
+        recipe_description = request.form['recipe_ins']
+        cur = get_db().execute("INSERT INTO Recipe(image, category, name, description) VALUES (?, ?, ?, ?)", (recipe_image, recipe_category, recipe_name, recipe_description))
+        db = get_db()
+        db.commit()
+        return render_template("main2.html")    
+    else:
+        return render_template("recipe.html")
 
 
 if __name__ == "__main__":
