@@ -12,7 +12,7 @@
         <div class="box">
             <form method="POST">
               <h4>Select Image:</h4>
-              <input type="file" name="recipePhoto" id="recipePhoto">
+              <input type="file" name="recipePhoto" id="recipePhoto" required>
               <label for="Recipe Type">Choose a Recipe Category:</label>
               <select name="category" id="category">
                 <optgroup label="Main Courses">
@@ -47,13 +47,13 @@
                 <div class="field">
                       <div class="control">
                             <h4>Enter Recipe Name:</h4>
-                            <input type="input" name="recipeName" id="recipeName">
+                            <input type="input" name="recipeName" id="recipeName" required>
                       </div>
                 </div>
                 <div class="field">
                       <div class="control">
                             <h5>Enter Link to Recipe or Recipe Instructions</h5>
-                            <input type="input" name="recipe_ins" id="recipe_ins">
+                            <input type="input" name="recipe_ins" id="recipe_ins" required>
                       </div>
                 </div>
                 <button type="submit" id= "add recipe">Submit</button>
