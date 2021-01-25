@@ -2,13 +2,12 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset = "utf-8">
-        
+        <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
         <title>Welcome</title>
         
     </head>
      <body>
         <header>
-            {% extends "template.html" %}
 
             {% block content %}
             <div>
@@ -17,13 +16,13 @@
                     <form method="POST" action="/login">
                         <div class="field">
                             <div class="control">
-                                <input type="email" name="userEmail" id="userEmail" placeholder="Your Email">
+                                <input type="email" name="userEmail" id="userEmail" placeholder="Your Email" required>
                             </div>
                         </div>
 
                         <div class="field">
                             <div class="control">
-                                <input type="password" name="userPassword" id="userPassword" placeholder="Your Password">
+                                <input type="password" name="userPassword" id="userPassword" placeholder="Your Password" required>
                             </div>
                         </div>
                         <button type="submit">Login</button>

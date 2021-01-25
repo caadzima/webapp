@@ -5,11 +5,11 @@
     <title>Share Recipes with Friends</title>
   </head>
   <body>
-    {% extends "template.html" %}
     {% block content %}
     
     <h1> Recipes </h1>
-      
+    <a href="{{ url_for('recipe')}}">
+      <button>Add Recipe</button>
     {% endblock %}
   </body>
 </html>

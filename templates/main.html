@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <link href="{{ url_for('static', filename='css/main.css') }}" rel="stylesheet">
+  </head>
+  <body>
+    {% block content %}
+    <h1>Share Recipes with Friends</h1>
+    <a href="{{ url_for('signup')}}">
+        <button>Signup</button>
+    </a>
+    <a href="{{ url_for('login')}}">
+        <button>Login</button>
+    </a>
+      
+    {% endblock %}
+  </body>
+</html>

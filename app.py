@@ -24,7 +24,7 @@ def template():
     cur = get_db().execute("Select * FROM USER", ())
     rv = cur.fetchall()
     print(rv)
-    return render_template("template.html")
+    return render_template("main.html")
 
 @app.route("/login", methods=['GET', 'POST'])
 def login():

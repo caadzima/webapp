@@ -1,0 +1,13 @@
+input [type=text]{
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+}
+button {
+  background-color: #6575aa; 
+  border: none;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+}

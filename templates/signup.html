@@ -2,14 +2,12 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset = "utf-8">
-        
+        <link href="{{ url_for('static', filename='css/login.css') }}" rel="stylesheet">
         <title>Welcome</title>
         
 
      <body>
         <header>
-            {% extends "template.html" %}
-
             {% block content %}
             <div>
                 <h3 class="title">Signup</h3>
@@ -17,20 +15,20 @@
                     <form method="POST">
                         <div class="field">
                             <div class="control">
-                                <input type="email" name="email" id="email" placeholder="Your Email">
+                                <input type="email" name="email" id="email" placeholder="Your Email" required>
                             </div>
                         </div>
 
                         <div class="field">
                             <div class="control">
-                                <input type="password" name="password" id="password" placeholder="Your Password">
+                                <input type="password" name="password" id="password" placeholder="Your Password" required>
                             </div>
                         </div>
                         <div><p id="msg"></p></div>
                         
                         <div class="field">
                             <div class="control">
-                                <input type="password" name="password2" id="password2" onkeyup="checkPasswords()" placeholder="Reenter Your Password">
+                                <input type="password" name="password2" id="password2" onkeyup="checkPasswords()" placeholder="Reenter Your Password" required>
                             </div>
                             <script>
                                 function checkPasswords() {
