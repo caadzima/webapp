@@ -1,4 +1,4 @@
-from flask import Flask, render_template, Blueprint, g, request
+from flask import Flask, render_template, Blueprint, g, request, redirect, url_for
 import sqlite3
 
 app = Flask(__name__)
@@ -38,7 +38,7 @@ def login():
                        and password=?""",
                 (userEmail, userPassword))
         if cur.fetchone():
-            return render_template("main2.html")
+            return redirect(url_for('main2'))
         else:
             return render_template("signup.html")
     else:
@@ -63,9 +63,13 @@ def signup():
         return render_template("login.html")
     else:
         return render_template("signup.html")
-@app.route("/main2")
+@app.route("/main2", methods=['GET', 'POST'])
 def main2():
-    return render_template("main2.html")
+    cur = get_db().cursor()
+    cur.execute("SELECT * FROM Recipe")
+    result = cur.fetchall()
+    print(result)
+    return render_template("main2.html", result = result)
 @app.route("/recipe", methods=['GET', 'POST'])
 def recipe():
     cur = get_db().cursor()
@@ -77,7 +81,7 @@ def recipe():
         cur = get_db().execute("INSERT INTO Recipe(image, category, name, description) VALUES (?, ?, ?, ?)", (recipe_image, recipe_category, recipe_name, recipe_description))
         db = get_db()
         db.commit()
-        return render_template("main2.html")    
+        return redirect(url_for('main2'))
     else:
         return render_template("recipe.html")
 

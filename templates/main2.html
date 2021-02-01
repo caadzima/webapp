@@ -6,10 +6,20 @@
   </head>
   <body>
     {% block content %}
-    
     <h1> Recipes </h1>
     <a href="{{ url_for('recipe')}}">
-      <button>Add Recipe</button>
+      <button>Add a Recipe</button>
+    </a>
     {% endblock %}
+    <h1>Recipes!</h1>
+    {% for item in result %}
+    <table><tr>
+      <td>{{item[0]}}</td>
+      <td>{{item[1]}}</td>
+      <td>{{item[2]}}</td>
+      <td>{{item[3]}}</td>
+    </tr></table>
+    {% endfor %}
   </body>
+
 </html>
